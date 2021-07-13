@@ -2,13 +2,16 @@ const Pokemon = (props) => {
   const height = props.data.height / 10;
   const weight = props.data.weight / 10;
 
-  const callback = (data) => {
+  const abilityCallback = (data) => {
     return <li> {data.ability.name} </li>;
   };
 
-  const abilities = props.data.abilities.map(callback);
+  const abilities = props.data.abilities.map(abilityCallback);
 
-  console.log(abilities);
+  const typeCallback = (data) => {
+    return <li> {data.type.name} </li>;
+  };
+  const types = props.data.types.map(typeCallback);
 
   return (
     <div className="card">
@@ -34,7 +37,10 @@ const Pokemon = (props) => {
 
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
-          Main Type: {props.data.types[0].type.name}
+          National Dex Number: {props.data.id}
+        </li>
+        <li className="list-group-item">
+          Type(s): <ul>{types}</ul>
         </li>
         <li className="list-group-item">
           Abilities: <ul>{abilities}</ul>

@@ -81,11 +81,11 @@ class App extends Component {
     return (
       <div>
         <h1 className="text-center justify-content-center">
-          Random Poke Finder!
+          Random Pokemon Finder!
         </h1>
         <p className="text-center justify-content-center">
-          Welcome to Poke Finder! Enter a number between 1-898 for some
-          fascinating Pokemon facts!
+          Welcome! Enter a number between 1-898 OR hit the Surprise! button for
+          some fascinating Pokemon facts!
         </p>
         <nav className="navbar bg-light center">
           <div className="container-fluid">
