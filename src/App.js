@@ -1,14 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Pokemon from "./components/Pokemon";
+import Home from "./components/Home";
 
-function App() {
+const App = (props) => {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Home />
       <Pokemon />
     </div>
   );
-}
+};
 
 export default App;
