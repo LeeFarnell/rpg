@@ -3,6 +3,7 @@ import { Component } from "react";
 import "./App.css";
 import Pokemon from "./components/Pokemon";
 import fetchData from "./utils/fetchData";
+import Error from "./components/Error";
 
 class App extends Component {
   constructor(props) {
@@ -61,6 +62,8 @@ class App extends Component {
 
     if (data && !error) {
       return <Pokemon data={data} />;
+    } else if (error && !data) {
+      return <Error />;
     }
   }
 
@@ -81,7 +84,7 @@ class App extends Component {
             >
               <input
                 className="form-control me-2"
-                type="search"
+                type="number"
                 placeholder="Search"
                 aria-label="Search"
                 id="search"
