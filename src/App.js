@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      pokeName: "123",
+      pokeName: "1",
       data: null,
       error: null,
     };
@@ -47,7 +47,13 @@ class App extends Component {
   onSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("hello");
+    await this.getPokeData();
+  };
+
+  onChange = () => {
+    this.setState({
+      pokeName: document.getElementById("search").value,
+    });
   };
 
   renderCurrentCard() {
@@ -68,12 +74,17 @@ class App extends Component {
         </p>
         <nav className="navbar navbar-light bg-light">
           <div className="container-fluid">
-            <form onSubmit={this.onSubmit} className="d-flex w-75">
+            <form
+              onSubmit={this.onSubmit}
+              onChange={this.onChange}
+              className="d-flex w-75"
+            >
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                id="search"
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
