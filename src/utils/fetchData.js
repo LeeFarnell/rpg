@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const fetchData = async (URL, params) => {
+const fetchData = async (URL) => {
   try {
-    const data = await axios.get(`${URL} ${params}`);
+    const data = await axios.get(URL);
 
-    return { data: data.data };
+    return data;
   } catch (error) {
     return { error: "Failed to fetch data from PokeAPI" };
   }

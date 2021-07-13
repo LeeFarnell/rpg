@@ -1,8 +1,16 @@
+import fetchData from "../../utils/fetchData";
+
 const Home = (props) => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("click");
+    const name = event.target.value;
+
+    console.log(name);
+
+    const data = await fetchData();
+
+    console.log(data);
   };
 
   return (
