@@ -87,7 +87,7 @@ class App extends Component {
           Welcome! Enter a number between 1-898 OR hit the Surprise! button for
           some fascinating Pokemon facts!
         </p>
-        <nav className="navbar bg-light center">
+        <nav className="navbar center">
           <div className="container-fluid">
             <form
               onSubmit={this.onSubmit}
@@ -97,17 +97,17 @@ class App extends Component {
               <input
                 className="form-control me-2"
                 type="number"
-                placeholder="Search"
+                placeholder="Enter a number"
                 aria-label="Search"
                 id="search"
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline" type="submit">
                 Search
               </button>
               <button
                 onClick={this.onRandom}
                 type="submit"
-                className="btn btn-outline-primary"
+                className="btn btn-outline"
               >
                 Surprise!
               </button>

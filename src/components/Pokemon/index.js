@@ -16,7 +16,7 @@ const Pokemon = (props) => {
   return (
     <div className="card">
       <div className="row p-3 justify-content-center text-center">
-        <h1 className="card-title">Name: {props.data.name}</h1>
+        <h1 className="card-title">{props.data.name}</h1>
         <div className="col-6">
           <h2>Default Variant </h2>
           <img
