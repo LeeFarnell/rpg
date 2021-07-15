@@ -80,7 +80,7 @@ class App extends Component {
     return (
       <div>
         <h1 className="text-center justify-content-center">
-          Random Pokémon Finder!
+          Random Pokémon Generator!
         </h1>
         <p className="text-center justify-content-center">
           Welcome! Enter a number between 1-898 OR hit the Surprise! button for
