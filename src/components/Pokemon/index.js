@@ -3,33 +3,33 @@ const Pokemon = (props) => {
   const weight = props.data.weight / 10;
 
   const abilityCallback = (data) => {
-    return <li> {data.ability.name} </li>;
+    return <li key={data.ability.name}> {data.ability.name} </li>;
   };
 
   const abilities = props.data.abilities.map(abilityCallback);
 
   const typeCallback = (data) => {
-    return <li> {data.type.name} </li>;
+    return <li key={data.type.name}> {data.type.name} </li>;
   };
   const types = props.data.types.map(typeCallback);
 
   return (
     <div className="card">
-      <div className="row p-3 justify-content-center text-center">
-        <h1 className="card-title">{props.data.name}</h1>
-        <div className="col-6">
-          <h2>Default Variant </h2>
+      <div className="row justify-content-center text-center d-flex m-0">
+        <h1 className="card-title p-0">{props.data.name}</h1>
+        <div className="col-6 flex-wrap p-0">
+          <h2 className="">Default Variant</h2>
           <img
             src={props.data.sprites.front_default}
             alt="..."
-            className="w-25"
+            className="image"
           />
         </div>
-        <div className="col-6">
+        <div className="col-6 flex-wrap">
           <h2>Shiny Variant</h2>
           <img
             src={props.data.sprites.front_shiny}
-            className="w-25"
+            className="image"
             alt="..."
           />
         </div>

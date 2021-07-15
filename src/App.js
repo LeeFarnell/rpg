@@ -62,7 +62,6 @@ class App extends Component {
     this.setState({
       pokeName: Math.floor(Math.random() * 898 + 1),
     });
-    console.log(this.state);
   };
 
   renderCurrentCard() {
