@@ -34,13 +34,13 @@ const Pokemon = (props) => {
   const cardCallback = (data) => {
     if (data) {
       return (
-        <div className="col-3 flex-wrap p-2">
+        <div className="col-lg-3 col-md-3 col-sm-12 p-2">
           <a href={data.images.large} target="_blank" rel="noreferrer">
             <img
               id={data.id}
               key={data.id}
               src={data.images.large}
-              className="rounded mx-auto d-block image"
+              className="cards"
               alt={data.name}
             ></img>
           </a>
@@ -99,7 +99,7 @@ const Pokemon = (props) => {
         <li className="list-group-item capital">Height: {height} meters</li>
         <li className="list-group-item capital">Weight: {weight}kg</li>
       </ul>
-      <div className="row justify-content-center text-center d-flex m-0">
+      <div className="row text-center justify-content-center m-0 d-flex">
         <h1 className="card-title p-0">Associated Pokemon Cards</h1>
         {cards}
       </div>
