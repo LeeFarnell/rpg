@@ -14,6 +14,7 @@ class App extends Component {
       pokeName: 1,
       data: null,
       dexData: null,
+      cardData: null,
       error: null,
       isStart: true,
     };
@@ -71,11 +72,36 @@ class App extends Component {
     }
   }
 
+  async getCardData() {
+    const params = this.state.pokeName;
+
+    const { data, error } = await fetchData(
+      `https://api.pokemontcg.io/v2/cards/?q=nationalPokedexNumbers:${params}`
+    );
+
+    if (data) {
+      this.setState({
+        cardData: data,
+        error: null,
+        isStart: false,
+      });
+    }
+
+    if (error) {
+      this.setState({
+        error,
+        data: null,
+        isStart: false,
+      });
+    }
+  }
+
   onSubmit = async (event) => {
     event.preventDefault();
 
     await this.getPokeData();
     await this.getDexData();
+    await this.getCardData();
   };
 
   onChange = () => {
@@ -91,10 +117,10 @@ class App extends Component {
   };
 
   renderCurrentCard() {
-    const { data, dexData, error } = this.state;
+    const { data, dexData, cardData, error } = this.state;
 
-    if (data && dexData && !error) {
-      return <Pokemon data={data} dexData={dexData} />;
+    if (data && dexData && cardData && !error) {
+      return <Pokemon data={data} dexData={dexData} cardData={cardData} />;
     } else if (error && !data) {
       return <Error />;
     } else {

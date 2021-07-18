@@ -6,7 +6,7 @@ const fetchData = async (URL) => {
 
     return data;
   } catch (error) {
-    return { error: "Failed to fetch data from PokeAPI" };
+    return { error: "Failed to fetch data from API" };
   }
 };
 

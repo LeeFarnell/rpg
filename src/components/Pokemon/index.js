@@ -1,4 +1,6 @@
 const Pokemon = (props) => {
+  // console.log(props.cardData.data);
+
   const newDexEntry = [];
 
   const dexEntry = props.dexData.flavor_text_entries;
@@ -24,6 +26,27 @@ const Pokemon = (props) => {
     return <li key={data.type.name}> {data.type.name} </li>;
   };
   const types = props.data.types.map(typeCallback);
+
+  const cardCallback = (data) => {
+    if (data) {
+      return (
+        <div className="col-3 flex-wrap p-2">
+          <a href={data.images.large} target="_blank" rel="noreferrer">
+            <img
+              src={data.images.large}
+              className="rounded mx-auto d-block image"
+              alt={data.name}
+            ></img>
+          </a>
+        </div>
+      );
+    } else {
+      return "No known cards.";
+    }
+  };
+
+  const cards = props.cardData.data.map(cardCallback);
+  console.log(cards);
 
   return (
     <div className="card">
@@ -66,6 +89,10 @@ const Pokemon = (props) => {
         <li className="list-group-item capital">Height: {height} meters</li>
         <li className="list-group-item capital">Weight: {weight}kg</li>
       </ul>
+      <div className="row justify-content-center text-center d-flex m-0">
+        <h1 className="card-title p-0">Associated Pokemon Cards</h1>
+        {cards}
+      </div>
     </div>
   );
 };
