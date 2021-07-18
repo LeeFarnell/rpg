@@ -1,4 +1,19 @@
 const Pokemon = (props) => {
+  const newDexEntry = [];
+
+  const dexEntry = props.dexData.flavor_text_entries;
+
+  const dexCallback = (dex) => {
+    if (dex.language.name === "en") {
+      newDexEntry.push(dex.flavor_text);
+      console.log(newDexEntry);
+    }
+  };
+
+  dexEntry.map(dexCallback);
+
+  console.log(newDexEntry);
+
   const height = props.data.height / 10;
   const weight = props.data.weight / 10;
 
@@ -38,6 +53,9 @@ const Pokemon = (props) => {
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
           National Dex Number: {props.data.id}
+        </li>
+        <li className="list-group-item">
+          Dex Entry: <ul> {newDexEntry[0]} </ul>{" "}
         </li>
         <li className="list-group-item">
           Type(s): <ul>{types}</ul>

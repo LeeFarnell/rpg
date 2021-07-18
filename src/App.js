@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       pokeName: 1,
       data: null,
+      dexData: null,
       error: null,
       isStart: true,
     };
@@ -46,10 +47,35 @@ class App extends Component {
     }
   }
 
+  async getDexData() {
+    const params = this.state.pokeName;
+
+    const { data, error } = await fetchData(
+      `https://pokeapi.co/api/v2/pokemon-species/${params}`
+    );
+
+    if (data) {
+      this.setState({
+        dexData: data,
+        error: null,
+        isStart: false,
+      });
+    }
+
+    if (error) {
+      this.setState({
+        error,
+        data: null,
+        isStart: false,
+      });
+    }
+  }
+
   onSubmit = async (event) => {
     event.preventDefault();
 
     await this.getPokeData();
+    await this.getDexData();
   };
 
   onChange = () => {
@@ -65,10 +91,10 @@ class App extends Component {
   };
 
   renderCurrentCard() {
-    const { data, error } = this.state;
+    const { data, dexData, error } = this.state;
 
-    if (data && !error) {
-      return <Pokemon data={data} />;
+    if (data && dexData && !error) {
+      return <Pokemon data={data} dexData={dexData} />;
     } else if (error && !data) {
       return <Error />;
     } else {
